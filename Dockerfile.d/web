@@ -3,7 +3,6 @@ FROM foobox/php:7.1-apache
 ARG WORDPRESS_VERSION=4.9.4
 
 RUN wget https://wordpress.org/wordpress-$WORDPRESS_VERSION.tar.gz && \
-	sha1sum wordpress-$WORDPRESS_VERSION.tar.gz && \
 	tar -xvf wordpress-$WORDPRESS_VERSION.tar.gz && \
 	rm wordpress-4.9.4.tar.gz && \
 	mv wordpress/* htdocs && \

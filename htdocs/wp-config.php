@@ -15,10 +15,10 @@ define('WP_PLUGIN_DIR', ABSPATH . 'wp-content/plugins');
 define('WP_PLUGIN_URL', WP_HOME . '/wp-content/plugins');
 
 # Disable the Plugin and Theme Editor
-define('DISALLOW_FILE_EDIT', !getenv('WORDPRESS_FILE_EDIT_ENABLE'));
+define('DISALLOW_FILE_EDIT', getenv('WORDPRESS_FILE_EDIT_ENABLE') !== 'true');
 
 # Disable Plugin and Theme Update and Installation
-define('DISALLOW_FILE_MODS', !getenv('WORDPRESS_FILE_MODS_ENABLE'));
+define('DISALLOW_FILE_MODS', getenv('WORDPRESS_FILE_MODS_ENABLE') !== 'true');
 
 # Disable WordPress Auto Updates
 define('AUTOMATIC_UPDATER_DISABLED', TRUE);
@@ -27,7 +27,7 @@ define('AUTOMATIC_UPDATER_DISABLED', TRUE);
 define('WP_AUTO_UPDATE_CORE', FALSE);
 
 # Disable Cron and Cron Timeout
-define('DISABLE_WP_CRON', !getenv('WORDPRESS_CRON_ENABLE'));
+define('DISABLE_WP_CRON', getenv('WORDPRESS_CRON_ENABLE') !== 'true');
 
 define('CONCATENATE_SCRIPTS', FALSE);
 define('COMPRESS_SCRIPTS', FALSE);
