@@ -1,0 +1,15 @@
+FROM foobox/php:7.1-cli
+
+ARG WORDPRESS_VERSION=4.9.4
+
+RUN wget https://wordpress.org/wordpress-$WORDPRESS_VERSION.tar.gz
+RUN tar -xvf wordpress-$WORDPRESS_VERSION.tar.gz
+RUN rm wordpress-4.9.4.tar.gz
+RUN mv wordpress/* htdocs
+RUN rmdir wordpress
+
+COPY . /var/www/html
+RUN composer-extension-install
+
+WORKDIR /var/www/html/htdocs
+CMD ["php", "/var/www/html/htdocs/wp-cron.php"]

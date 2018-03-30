@@ -1,0 +1,50 @@
+version: '2'
+
+services:
+
+    application:
+        image: foobox/wordpress:web
+        environment:
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            WORDPRESS_DISALLOW_FILE_MODS: ${WORDPRESS_DISALLOW_FILE_MODS}
+        volumes:
+            - wp-content:/var/www/html/htdocs/wp-content
+
+    cron:
+        image: foobox/wordpress:cli
+        environment:
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            WORDPRESS_DISALLOW_FILE_MODS: ${WORDPRESS_DISALLOW_FILE_MODS}
+        volumes:
+            - wp-content:/var/www/html/htdocs/wp-content
+        labels:
+            io.rancher.container.start_once: 'true'
+            cron.schedule: '@every 5m'
+
+    mysql:
+        image: mysql:5.7
+        environment:
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        volumes:
+            - mysql:/var/lib/mysql
+
+    memcache:
+        image: foobox/memcached:1.4
+        
+volumes:
+    plugins:
+        driver: rancher-nfs
+
+    themes:
+        driver: rancher-nfs
+
+    mysql:
+        driver: local
+

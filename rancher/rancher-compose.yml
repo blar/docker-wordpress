@@ -1,0 +1,49 @@
+version: '2'
+catalog:
+    name: Wordpress
+    version: v4.9.4
+    description: 'Wordpress'
+    minimum_rancher_version: 1.6.7
+    questions:
+        -
+            variable: MYSQL_DATABASE
+            description: MySQL-Database
+            label: MySQL-Database
+            required: true
+            default: wordpress
+            type: string
+        -
+            variable: MYSQL_ROOT_PASSWORD
+            description: MySQL-Root-Password
+            label: MySQL-Root-Password
+            required: true
+            type: password
+        -
+            variable: MYSQL_USER
+            description: MySQL-Username
+            label: MySQL-Username
+            required: true
+            default: wordpress
+            type: string
+        -
+            variable: MYSQL_PASSWORD
+            description: MySQL-Password
+            label: MySQL-Password
+            required: true
+            type: password
+
+        -
+            variable: WORDPRESS_FILE_MODS_ENABLE
+            description: Installation von Plugins und Themes erlauben.
+            label: DISALLOW_FILE_MODS
+            required: true
+            type: boolean
+            default: true
+
+        -
+            variable: WORDPRESS_FILE_EDIT_ENABLE
+            description: Änderungen an Plugins und Themes erlauben.
+            label: DISALLOW_FILE_EDIT
+            required: true
+            type: boolean
+            default: false

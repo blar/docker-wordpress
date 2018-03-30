@@ -1,0 +1,7 @@
+{
+    "require": {
+        "ext-zlib": "*",
+        
+        "ext-curl": "*"
+    }
+}

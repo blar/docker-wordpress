@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+
+    application:
+        image: foobox/wordpress:web
+        environment:
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: 4yGTuX55gQttlQI2
+            WORDPRESS_DISALLOW_FILE_MODS: "false"
+        volumes:
+            - wp-content:/var/www/html/htdocs/wp-content
+        ports:
+            - "80:80"
+        command: httpd -DFOREGROUND
+
+    cron:
+        image: foobox/wordpress:cli
+        environment:
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: 4yGTuX55gQttlQI2
+            WORDPRESS_DISALLOW_FILE_MODS: "false"
+        volumes:
+            - wp-content:/var/www/html/htdocs/wp-content
+        labels:
+            io.rancher.container.start_once: 'true'
+            cron.schedule: '@every 5m'
+
+    mysql:
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: wordpress
+            MYSQL_PASSWORD: 4yGTuX55gQttlQI2
+            MYSQL_ROOT_PASSWORD: g9WcbEAOzpN3s83p
+        volumes:
+            - mysql:/var/lib/mysql
+
+    memcache:
+        image: foobox/memcached:1.4
+        
+volumes:
+    wp-content:
+        driver: local
+    mysql:
+        driver: local
+
