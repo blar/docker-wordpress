@@ -8,7 +8,7 @@ RUN rm wordpress-4.9.4.tar.gz
 RUN mv wordpress/* htdocs
 RUN rmdir wordpress
 
-COPY .. /var/www/html
+COPY . /var/www/html
 RUN composer-extension-install
 
 WORKDIR /var/www/html/htdocs
