@@ -2,6 +2,7 @@
     "require": {
         "ext-zlib": "*",
         
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "ext-apcu": "*"
     }
 }
