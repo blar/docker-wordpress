@@ -6,6 +6,9 @@ if(!defined('ABSPATH')) {
 }
 
 $scheme = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? $_SERVER['REQUEST_SCHEME'];
+if($scheme === 'https') {
+    $_SERVER['HTTPS'] = 'on';
+}
 
 define('WP_HOME', $scheme.'://' . $_SERVER['HTTP_HOST']);
 define('WP_SITEURL', $scheme.'://' . $_SERVER['HTTP_HOST']);
@@ -30,6 +33,8 @@ define('WP_AUTO_UPDATE_CORE', FALSE);
 
 # Disable Cron and Cron Timeout
 define('DISABLE_WP_CRON', getenv('WORDPRESS_CRON_ENABLE') !== 'true');
+
+define('WP_CACHE', getenv('WORDPRESS_CACHE') === 'true');
 
 define('CONCATENATE_SCRIPTS', FALSE);
 define('COMPRESS_SCRIPTS', FALSE);
