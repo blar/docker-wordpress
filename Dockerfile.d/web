@@ -8,7 +8,7 @@ RUN wget https://wordpress.org/wordpress-$WORDPRESS_VERSION.tar.gz && \
 	mv wordpress/* htdocs && \
 	rmdir wordpress
 
-COPY . /var/www/html
+COPY .. /var/www/html
 RUN composer-extension-install
 
 WORKDIR /var/www/html/htdocs
