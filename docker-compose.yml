@@ -3,7 +3,7 @@ version: '3'
 services:
 
     application:
-        image: foobox/wordpress:web
+        image: foobox/wordpress:4.9-web
         environment:
             MYSQL_DATABASE: wordpress
             MYSQL_USER: wordpress
@@ -16,7 +16,7 @@ services:
         command: httpd -DFOREGROUND
 
     cron:
-        image: foobox/wordpress:cli
+        image: foobox/wordpress:4.9-cli
         environment:
             MYSQL_DATABASE: wordpress
             MYSQL_USER: wordpress
