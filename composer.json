@@ -3,6 +3,7 @@
         "ext-zlib": "*",
         
         "ext-curl": "*",
-        "ext-apcu": "*"
+        "ext-apcu": "*",
+        "ext-gd": "*"
     }
 }
