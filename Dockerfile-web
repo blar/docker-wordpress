@@ -1,6 +1,6 @@
 FROM foobox/php:7.1-apache
 
-ARG WORDPRESS_VERSION=4.9.5
+ARG WORDPRESS_VERSION=4.9.6
 
 RUN wget https://wordpress.org/wordpress-$WORDPRESS_VERSION.tar.gz && \
 	tar -xvf wordpress-$WORDPRESS_VERSION.tar.gz && \
