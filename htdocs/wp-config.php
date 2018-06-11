@@ -97,7 +97,7 @@ define('WP_DEBUG_DISPLAY', getenv('WORDPRESS_DEBUG_DISPLAY') === 'true');
 /**
  * @link https://codex.wordpress.org/Multisite_Network_Administration
  */
-if(getenv('WORDPRESS_MULTISITE_ALLOW) === 'true') {
+if(getenv('WORDPRESS_MULTISITE_ALLOW') === 'true') {
     define('WP_ALLOW_MULTISITE', getenv('WORDPRESS_MULTISITE_ALLOW') === 'true');
     define('MULTISITE', getenv('WORDPRESS_MULTISITE_ENABLE') === 'true');
     define('SUBDOMAIN_INSTALL', getenv('WORDPRESS_MULTISITE_SUBDOMAIN_INSTALL') === 'true');
