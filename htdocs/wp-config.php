@@ -79,7 +79,7 @@ include ABSPATH.'wp-keys.php';
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = getenv('WORDPRESS_TABLE_PREFIX') ?: 'wp_';
+$table_prefix = getenv('WORDPRESS_DATABASE_PREFIX') ?: 'wp_';
 
 /**
  * For developers: WordPress debugging mode.
@@ -92,6 +92,20 @@ $table_prefix = getenv('WORDPRESS_TABLE_PREFIX') ?: 'wp_';
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
 define('WP_DEBUG', getenv('WORDPRESS_DEBUG') === 'true');
+define('WP_DEBUG_DISPLAY', getenv('WORDPRESS_DEBUG_DISPLAY') === 'true');
+
+/**
+ * @link https://codex.wordpress.org/Multisite_Network_Administration
+ */
+if(getenv('WORDPRESS_MULTISITE_ALLOW') === 'true') {
+    define('WP_ALLOW_MULTISITE', getenv('WORDPRESS_MULTISITE_ALLOW') === 'true');
+    define('MULTISITE', getenv('WORDPRESS_MULTISITE_ENABLE') === 'true');
+    define('SUBDOMAIN_INSTALL', getenv('WORDPRESS_MULTISITE_SUBDOMAIN_INSTALL') === 'true');
+    define('DOMAIN_CURRENT_SITE', getenv('WORDPRESS_MULTISITE_CURRENT_SITE_DOMAIN'));
+    define('PATH_CURRENT_SITE', getenv('WORDPRESS_MULTISITE_CURRENT_SITE_PATH'));
+    define('SITE_ID_CURRENT_SITE', getenv('WORDPRESS_MULTISITE_CURRENT_SITE_ID'));
+    define('BLOG_ID_CURRENT_SITE', getenv('WORDPRESS_MULTISITE_CURRENT_SITE_BLOG_ID'));
+}
 
 /* That's all, stop editing! Happy blogging. */
 
