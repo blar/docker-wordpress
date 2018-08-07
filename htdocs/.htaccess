@@ -1,2 +1,8 @@
-FallbackResource /index.php
-DirectoryIndex index.php /index.php
+# FallbackResource does not work with SetHandler and non-existing php files.
+# FallbackResource /index.php
+# DirectoryIndex index.php /index.php
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
