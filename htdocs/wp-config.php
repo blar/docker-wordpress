@@ -10,8 +10,10 @@ if($scheme === 'https') {
     $_SERVER['HTTPS'] = 'on';
 }
 
-define('WP_HOME', $scheme.'://' . $_SERVER['HTTP_HOST']);
-define('WP_SITEURL', $scheme.'://' . $_SERVER['HTTP_HOST']);
+if(array_key_exists('HTTP_HOST', $_SERVER)) {
+    define('WP_HOME', $scheme.'://' . $_SERVER['HTTP_HOST']);
+    define('WP_SITEURL', $scheme.'://' . $_SERVER['HTTP_HOST']);
+}
 
 define('WP_CONTENT_DIR', ABSPATH.'wp-content');
 define('WP_CONTENT_URL', WP_HOME.'/wp-content');
